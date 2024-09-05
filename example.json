@@ -1,0 +1,182 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "CUZjgjgeJBDDV5TivlYnU0C-h1M",
+  "nextPageToken": "CAUQAA",
+  "regionCode": "CA",
+  "pageInfo": {
+    "totalResults": 1000000,
+    "resultsPerPage": 5
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "ytoCxCEo6cNNotYNvwnzdlf9LoA",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "XTa8eS1Atd4"
+      },
+      "snippet": {
+        "publishedAt": "2014-12-15T11:05:20Z",
+        "channelId": "UC3Nf709VMJmhvP1mNoxNC3g",
+        "title": "Backing Track II-V-I Progression in G Major",
+        "description": "Download The Backing Track | https://bit.ly/3af3zh7 40 Major II V I Jazz Guitar Licks | https://bit.ly/2PfKbGF 50 Major II V I Jazz ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/XTa8eS1Atd4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/XTa8eS1Atd4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/XTa8eS1Atd4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Backing Tracks Channel",
+        "liveBroadcastContent": "none",
+        "publishTime": "2014-12-15T11:05:20Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "s_GMJqYtOJNiVA8f6cQTjHGlYz4",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "DW1yTvyh0mA"
+      },
+      "snippet": {
+        "publishedAt": "2021-08-28T18:53:46Z",
+        "channelId": "UCEXDaXzYhqYdLCQ3Ce7U2Og",
+        "title": "G Major Jazz Backing Track | Slow Swing 1-6-2-5",
+        "description": "INTRO SOLO TAB → https://bit.ly/3gEy8j4 Jazz licks → https://bit.ly/30lVIJT Play-along at 0:51 More jazz jams ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/DW1yTvyh0mA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/DW1yTvyh0mA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/DW1yTvyh0mA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Quist",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-08-28T18:53:46Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "xRIbZKDAOJKkPGi4TL552TwRMmk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "LrulKPjiDZQ"
+      },
+      "snippet": {
+        "publishedAt": "2022-07-28T10:03:34Z",
+        "channelId": "UCjIlN5Rr0WKn0iWQVCgg3gQ",
+        "title": "G Major Jazz Backing Track | Medium Swing 1-6-2-5",
+        "description": "Provided to YouTube by Routenote G Major Jazz Backing Track | Medium Swing 1-6-2-5 · Quist Backing Jam Tracks · Quist ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/LrulKPjiDZQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/LrulKPjiDZQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/LrulKPjiDZQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Quist - Topic",
+        "liveBroadcastContent": "none",
+        "publishTime": "2022-07-28T10:03:34Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "3oR2UXasvpceZyxN5KO8wdFTV6I",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "fNF2FYjiyZQ"
+      },
+      "snippet": {
+        "publishedAt": "2021-06-13T23:46:06Z",
+        "channelId": "UC8ygPT6PHoPjxUNI_PXYWYw",
+        "title": "SMOOTH JAZZ BACKING TRACK - G",
+        "description": "SMOOTH NEO SOUL BACKING TRACK JAM TRACK FOR GUITAR © all rights reserved © tutti i diritti riservati The backing tracks ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/fNF2FYjiyZQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/fNF2FYjiyZQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/fNF2FYjiyZQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "EssentialBackingTracks",
+        "liveBroadcastContent": "none",
+        "publishTime": "2021-06-13T23:46:06Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "UIAoqTNm0Eo8ndaze6Rw7IaQUvY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "bgugA89k1YQ"
+      },
+      "snippet": {
+        "publishedAt": "2017-09-19T08:45:59Z",
+        "channelId": "UCosHstO-_wnRnB56YUg-pIQ",
+        "title": "Slow Classic Ballad Backing Track G Major",
+        "description": "Instrumental jam track classic blues ballad '60s style with electric guitars, drums, bass and organ. For musicians, singers ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/bgugA89k1YQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/bgugA89k1YQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/bgugA89k1YQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Nick Neblo",
+        "liveBroadcastContent": "none",
+        "publishTime": "2017-09-19T08:45:59Z"
+      }
+    }
+  ]
+}
