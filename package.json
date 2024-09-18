@@ -16,7 +16,7 @@
     "@reduxjs/toolkit": "^2.2.7",
     "axios": "^1.7.7",
     "framer-motion": "^11.5.4",
-    "next": "14.2.7",
+    "next": "^14.2.12",
     "react": "^18",
     "react-dom": "^18",
     "react-howler": "^5.2.0",
