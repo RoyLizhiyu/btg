@@ -1,11 +1,13 @@
 import { searchTracksApi } from "@/services/searchTracksApi";
 import { configureStore } from "@reduxjs/toolkit";
 import audioReducer from "./audioSlice";
+import trackMetaReducer from "./trackMetaSlice";
 export const makeStore = () => {
   return configureStore({
     reducer: {
       [searchTracksApi.reducerPath]: searchTracksApi.reducer,
       audio: audioReducer,
+      trackMeta: trackMetaReducer,
     },
     middleware: (getDefaultMiddleWare) =>
       getDefaultMiddleWare().concat(searchTracksApi.middleware),

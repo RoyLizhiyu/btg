@@ -1,4 +1,4 @@
-type Key =
+export type Key =
   | "c"
   | "g"
   | "d"
@@ -24,10 +24,17 @@ type Key =
   | "gm"
   | "dm";
 
-type Genre = "jazz" | "rock" | "rnb" | "neoSoul" | "funk" | "blues" | "Ballad";
+export type Genre =
+  | "jazz"
+  | "rock"
+  | "rnb"
+  | "neoSoul"
+  | "funk"
+  | "blues"
+  | "Ballad";
 
-type Bpm = "slow" | "medium" | "fast";
-type Track = {
+export type Bpm = "slow" | "medium" | "fast";
+export type Track = {
   key: Key;
   genre: Genre;
   bpm: Bpm;

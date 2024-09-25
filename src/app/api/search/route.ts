@@ -15,6 +15,7 @@ const filterVideos = (videos: any, key: string[]) =>
       };
     }) => {
       const title = snippet.title;
+      console.log({ title });
       const containsBacking = title.toLowerCase().includes("backing");
       const containsKey = key.some((k) => {
         // Check if the key is major or minor
@@ -56,7 +57,9 @@ export async function GET(req: Request) {
   } ${BPM_MAP[bpm as Bpm]}`;
   const youtubeSearchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
     searchQuery
-  )}&type=video&key=${process.env.YOUTUBE_API_KEY}&maxResults=10`;
+  )}&type=video&key=${
+    process.env.YOUTUBE_API_KEY
+  }&maxResults=10&order=relevance&RegionCode=CA`;
 
   const youtubeResponse = await axios.get(youtubeSearchUrl);
   const videos = youtubeResponse.data.items;
@@ -66,6 +69,11 @@ export async function GET(req: Request) {
   // Randomly select a video
   //TODO: Make sure the random selected video is the correct key.
   const filteredVideos = filterVideos(videos, [key, KEYS_MAP[key as Key]]);
+  videos.forEach((video: any) => console.log(video.snippet.title));
+  console.log("-----------------------------------------------------");
+  console.log("-----------------------------------------------------");
+  console.log("-----------------------------------------------------");
+  filteredVideos.forEach((video: any) => console.log(video.snippet.title));
   if (!filteredVideos || filteredVideos.length === 0) {
     return new NextResponse(
       JSON.stringify({ error: "No backing track found" }),
@@ -78,6 +86,7 @@ export async function GET(req: Request) {
   const randomIndex = Math.floor(Math.random() * filteredVideos.length);
   const selectedVideo = filteredVideos[randomIndex];
   const videoUrl = `https://www.youtube.com/watch?v=${selectedVideo.id.videoId}`;
+  console.log({ videoUrl, searchQuery });
   try {
     const stream = ytdl(videoUrl, {
       filter: "audioonly",
