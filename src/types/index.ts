@@ -31,7 +31,7 @@ export type Genre =
   | "neoSoul"
   | "funk"
   | "blues"
-  | "Ballad";
+  | "ballad";
 
 export type Bpm = "slow" | "medium" | "fast";
 export type Track = {

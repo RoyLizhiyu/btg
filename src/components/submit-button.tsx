@@ -1,14 +1,17 @@
 "use client";
 import { useLazySearchTracksQuery } from "@/services/searchTracksApi";
-import React, { useEffect, useState } from "react";
-import { Select, SelectSection, SelectItem } from "@nextui-org/select";
-import { BPM, GENRES, KEYS } from "@/constants";
+import React from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { setAudioUrl } from "@/lib/store/audioSlice";
-import { setBpm, setGenre, setKey } from "@/lib/store/trackMetaSlice";
-import { Bpm, Genre, Key } from "@/types";
-const SubmitButton = () => {
-  const [fetchTrack] = useLazySearchTracksQuery();
+import { Button, ButtonGroup } from "@nextui-org/button";
+
+const SubmitButton = ({
+  fetchTrack,
+  isFetching,
+}: {
+  fetchTrack: ReturnType<typeof useLazySearchTracksQuery>[0];
+  isFetching: boolean;
+}) => {
   const dispatch = useAppDispatch();
   const { key, genre, bpm } = useAppSelector((state) => state.trackMeta);
   const handleSubmit = () => {
@@ -20,42 +23,6 @@ const SubmitButton = () => {
   };
   return (
     <>
-      <div>
-        <Select
-          label="Key"
-          color="primary"
-          selectedKeys={[key]}
-          onChange={(e) => dispatch(setKey(e.target.value as Key))}
-        >
-          {KEYS.map((key) => (
-            <SelectItem color="primary" key={key}>
-              {key}
-            </SelectItem>
-          ))}
-        </Select>
-      </div>
-      <div>
-        <Select
-          label="genre"
-          selectedKeys={[genre]}
-          onChange={(e) => dispatch(setGenre(e.target.value as Genre))}
-        >
-          {GENRES.map((key) => (
-            <SelectItem key={key}>{key}</SelectItem>
-          ))}
-        </Select>
-      </div>
-      <div>
-        <Select
-          label="BPM"
-          selectedKeys={[bpm]}
-          onChange={(e) => dispatch(setBpm(e.target.value as Bpm))}
-        >
-          {BPM.map((key) => (
-            <SelectItem key={key}>{key}</SelectItem>
-          ))}
-        </Select>
-      </div>
       <div
         style={{
           display: "flex",
@@ -63,8 +30,12 @@ const SubmitButton = () => {
           flexDirection: "row",
         }}
       >
-        <button onClick={handleSubmit}>Submit</button>
-        <button onClick={handleSubmit}>Feeling Lucky</button>
+        <Button onClick={handleSubmit} color="success" isLoading={isFetching}>
+          Submit
+        </Button>
+        <Button onClick={handleSubmit} color="danger" isLoading={isFetching}>
+          Feeling Lucky
+        </Button>
       </div>
     </>
   );

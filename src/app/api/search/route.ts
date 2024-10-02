@@ -4,6 +4,7 @@ import fs, { Stats } from "fs";
 import { NextRequest, NextResponse } from "next/server";
 import ytdl from "@distube/ytdl-core";
 import { BPM_MAP, GENRES_MAP, KEYS_MAP } from "@/constants";
+import { Bpm, Genre, Key } from "@/types";
 
 const filterVideos = (videos: any, key: string[]) =>
   videos.filter(
@@ -22,13 +23,18 @@ const filterVideos = (videos: any, key: string[]) =>
         if (k.toLowerCase().includes("minor") || k.includes("m")) {
           // If the key is minor, match "f#m", "f# minor", etc.
           const regex = new RegExp(
-            `\\b${k.replace(/m|minor/i, "(m|minor)")}\\b`,
+            `\\b${k.replace(/m|minor/i, "(m|minor|minor7)")}\\b`,
             "i"
           );
           return regex.test(title);
         } else {
+          console.log({ title });
           // If the key is major, ensure "minor" or "m" does NOT follow
-          const regex = new RegExp(`\\b${k}\\b(?!\\s*(minor|m))`, "i");
+          // const regex = new RegExp(`\\b${k}\\b(?!\\s*(minor|m))`, "i");
+          const regex = new RegExp(
+            `\\b${k}(?:\\s*maj7|\\s*maj|(?!(\\s*minor|m)))\\b`,
+            "i"
+          );
           return regex.test(title);
         }
       });
@@ -73,6 +79,7 @@ export async function GET(req: Request) {
   console.log("-----------------------------------------------------");
   console.log("-----------------------------------------------------");
   console.log("-----------------------------------------------------");
+  console.log({ searchQuery });
   filteredVideos.forEach((video: any) => console.log(video.snippet.title));
   if (!filteredVideos || filteredVideos.length === 0) {
     return new NextResponse(
@@ -86,7 +93,7 @@ export async function GET(req: Request) {
   const randomIndex = Math.floor(Math.random() * filteredVideos.length);
   const selectedVideo = filteredVideos[randomIndex];
   const videoUrl = `https://www.youtube.com/watch?v=${selectedVideo.id.videoId}`;
-  console.log({ videoUrl, searchQuery });
+  console.log({ videoUrl });
   try {
     const stream = ytdl(videoUrl, {
       filter: "audioonly",

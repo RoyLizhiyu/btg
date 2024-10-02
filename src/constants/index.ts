@@ -1,3 +1,4 @@
+import { Key } from "@/types";
 const KEYS = [
   "c",
   "g",
@@ -58,7 +59,7 @@ const GENRES_MAP = {
   neoSoul: "Neo Soul",
   funk: "Funk",
   blues: "Blues",
-  Ballad: "Ballad",
+  ballad: "Ballad",
 };
 
 const BPM_MAP = {
@@ -67,7 +68,7 @@ const BPM_MAP = {
   fast: "Fast",
 };
 
-const GENRES = ["jazz", "rock", "rnb", "neoSoul", "funk", "blues", "Ballad"];
+const GENRES = ["jazz", "rock", "rnb", "neoSoul", "funk", "blues", "ballad"];
 
 const BPM = ["slow", "medium", "fast"];
 

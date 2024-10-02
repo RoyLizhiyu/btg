@@ -1,5 +1,5 @@
 "use client";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector, useFetchTrack } from "@/lib/hooks";
 import { setAudioUrl, setPlaying } from "@/lib/store/audioSlice";
 import { useLazySearchTracksQuery } from "@/services/searchTracksApi";
 import React from "react";
@@ -14,18 +14,24 @@ const TrackPlayer = () => {
   const [duration, setDuration] = React.useState(0); // To store the duration of the track
   const [seek, setSeek] = React.useState(0); // Current seek position
   const [isSeeking, setIsSeeking] = React.useState(false);
-  const [fetchTrack] = useLazySearchTracksQuery();
   const dispatch = useAppDispatch();
   const howlerRef = React.useRef<ReactHowler>(null);
   const { key, genre, bpm } = useAppSelector((state) => state.trackMeta);
+  const { fetch } = useFetchTrack();
   const handleSeekingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSeek(parseFloat(e.target.value));
     setIsSeeking(true);
   };
   const loopRef = React.useRef(loop);
+  const keyRef = React.useRef(key);
+  const genreRef = React.useRef(genre);
+  const bpmRef = React.useRef(bpm);
   React.useEffect(() => {
     loopRef.current = loop;
-  }, [loop]);
+    keyRef.current = key;
+    genreRef.current = genre;
+    bpmRef.current = bpm;
+  }, [bpm, genre, key, loop]);
 
   const handleLoad = () => {
     dispatch(setPlaying(true));
@@ -65,10 +71,10 @@ const TrackPlayer = () => {
                 setSeek(0);
               } else {
                 dispatch(setPlaying(false));
-                fetchTrack({ key, genre, bpm }).then(({ data }) => {
-                  if (data) {
-                    dispatch(setAudioUrl(data.audioSrc));
-                  }
+                fetch({
+                  propKey: keyRef.current,
+                  propBpm: bpmRef.current,
+                  propGenre: genreRef.current,
                 });
               }
             }}
@@ -96,7 +102,6 @@ const TrackPlayer = () => {
           </span>
         </label>
       </div>
-      <h1>{`${loop}`} </h1>
     </>
   );
 };
