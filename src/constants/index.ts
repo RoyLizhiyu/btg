@@ -26,6 +26,10 @@ const KEYS = [
   "dm",
 ];
 
+const GENRES = ["jazz", "rock", "rnb", "neoSoul", "funk", "blues", "ballad"];
+
+const BPM = ["slow", "medium", "fast"];
+
 const KEYS_MAP: Record<Key, string> = {
   c: "C Major",
   g: "G Major",
@@ -67,9 +71,5 @@ const BPM_MAP = {
   medium: "Medium",
   fast: "Fast",
 };
-
-const GENRES = ["jazz", "rock", "rnb", "neoSoul", "funk", "blues", "ballad"];
-
-const BPM = ["slow", "medium", "fast"];
 
 export { KEYS, GENRES, BPM, KEYS_MAP, GENRES_MAP, BPM_MAP };

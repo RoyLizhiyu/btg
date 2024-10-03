@@ -7,10 +7,12 @@ import ReactHowler from "react-howler";
 import PlayPauseButton from "./play-pause-button";
 import ShuffleButton from "./shuffle-button";
 import RepeatButton from "./repeat-button";
+import { Button, ButtonGroup } from "@nextui-org/button";
+import { Slider, SliderValue } from "@nextui-org/slider";
 
 const TrackPlayer = () => {
   const { audioUrl, playing, loop } = useAppSelector((s) => s.audio);
-  const [volume, setVolume] = React.useState(1);
+  const [volume, setVolume] = React.useState(0.6);
   const [duration, setDuration] = React.useState(0); // To store the duration of the track
   const [seek, setSeek] = React.useState(0); // Current seek position
   const [isSeeking, setIsSeeking] = React.useState(false);
@@ -18,9 +20,11 @@ const TrackPlayer = () => {
   const howlerRef = React.useRef<ReactHowler>(null);
   const { key, genre, bpm } = useAppSelector((state) => state.trackMeta);
   const { fetch } = useFetchTrack();
-  const handleSeekingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSeek(parseFloat(e.target.value));
-    setIsSeeking(true);
+  const handleSeekingChange = (value: SliderValue) => {
+    if (typeof value === "number") {
+      setSeek(value);
+      setIsSeeking(true);
+    }
   };
   const loopRef = React.useRef(loop);
   const keyRef = React.useRef(key);
@@ -40,11 +44,13 @@ const TrackPlayer = () => {
       setDuration(howlerRef.current.duration());
     }
   };
-  const handleMouseUpSeek = () => {
-    if (howlerRef.current) {
-      howlerRef.current.seek(seek);
+  const handleMouseUpSeek = (value: SliderValue) => {
+    if (typeof value === "number") {
+      if (howlerRef.current) {
+        howlerRef.current.seek(value);
+      }
+      setIsSeeking(false);
     }
-    setIsSeeking(false);
   };
 
   React.useEffect(() => {
@@ -83,24 +89,36 @@ const TrackPlayer = () => {
           />
         </div>
       )}
-      <PlayPauseButton />
-      <ShuffleButton />
-      <RepeatButton />
-      <div className="seek">
-        <label>
-          Seek:
-          <span className="slider-container">
-            <input
-              type="range"
-              min="0"
-              max={duration.toFixed(2)}
-              step=".01"
-              value={seek.toFixed(2)}
-              onChange={handleSeekingChange}
-              onMouseUp={handleMouseUpSeek}
-            />
-          </span>
-        </label>
+      <ButtonGroup fullWidth color="danger">
+        <ShuffleButton />
+        <PlayPauseButton />
+        <RepeatButton />
+      </ButtonGroup>
+      <Slider
+        aria-label="progress-bar"
+        size="md"
+        color="success"
+        step={0.01}
+        maxValue={duration}
+        minValue={0}
+        value={seek}
+        startContent={new Date(seek * 1000).toISOString().substring(14, 19)}
+        endContent={new Date(duration * 1000).toISOString().substring(14, 19)}
+        onChange={handleSeekingChange}
+        onChangeEnd={handleMouseUpSeek}
+      />
+      <div className="flex flex-col gap-2 w-full h-full max-w-md items-start justify-center">
+        <Slider
+          aria-label="Volume"
+          size="sm"
+          color="success"
+          value={volume * 100}
+          onChange={(value: SliderValue) => {
+            console.log(value);
+            if (typeof value === "number") setVolume(value / 100);
+          }}
+          className="max-w-md"
+        />
       </div>
     </>
   );
