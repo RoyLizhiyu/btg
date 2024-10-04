@@ -48,15 +48,25 @@ const SubmitButton = ({
           flexDirection: "row",
         }}
       >
-        <Button onClick={handleSubmit} color="success" isLoading={isFetching}>
-          Submit
+        <Button
+          onClick={handleSubmit}
+          color="success"
+          isLoading={isFetching}
+          size="lg"
+          className="text-lg text-white"
+          variant="shadow"
+        >
+          {isFetching ? "Generating..." : "Generate"}
         </Button>
         <Button
           onClick={handleFeelingLucky}
           color="danger"
           isLoading={isFetching}
+          size="lg"
+          className="text-lg"
+          variant="shadow"
         >
-          Feeling Lucky
+          {isFetching ? "Generating..." : "I'm Feeling Lucky"}
         </Button>
       </div>
     </>
