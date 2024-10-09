@@ -3,10 +3,7 @@ import { useLazySearchTracksQuery } from "@/services/searchTracksApi";
 import React from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { setAudioUrl } from "@/lib/store/audioSlice";
-import { Button, ButtonGroup } from "@nextui-org/button";
-import { setBpm, setGenre, setKey } from "@/lib/store/trackMetaSlice";
-import { BPM, GENRES, KEYS } from "@/constants";
-import { Bpm, Genre, Key } from "@/types";
+import { Button } from "@nextui-org/button";
 
 const SubmitButton = ({
   fetchTrack,
@@ -24,52 +21,20 @@ const SubmitButton = ({
       }
     });
   };
-  const handleFeelingLucky = () => {
-    const randomKey = KEYS[Math.floor(Math.random() * KEYS.length)];
-    const randomGenre = GENRES[Math.floor(Math.random() * GENRES.length)];
-    const randomBPM = BPM[Math.floor(Math.random() * BPM.length)];
-    dispatch(setBpm(randomBPM as Bpm));
-    dispatch(setGenre(randomGenre as Genre));
-    dispatch(setKey(randomKey as Key));
-    fetchTrack({ key: randomKey, genre: randomGenre, bpm: randomBPM }).then(
-      ({ data }) => {
-        if (data) {
-          dispatch(setAudioUrl(data.audioSrc));
-        }
-      }
-    );
-  };
+
   return (
-    <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          flexDirection: "row",
-        }}
+    <div className="w-1/5 m-0 flex items-center justify-center">
+      <Button
+        onClick={handleSubmit}
+        color="success"
+        isLoading={isFetching}
+        size="lg"
+        className="text-lg text-white"
+        variant="shadow"
       >
-        <Button
-          onClick={handleSubmit}
-          color="success"
-          isLoading={isFetching}
-          size="lg"
-          className="text-lg text-white"
-          variant="shadow"
-        >
-          {isFetching ? "Generating..." : "Generate"}
-        </Button>
-        <Button
-          onClick={handleFeelingLucky}
-          color="danger"
-          isLoading={isFetching}
-          size="lg"
-          className="text-lg"
-          variant="shadow"
-        >
-          {isFetching ? "Generating..." : "I'm Feeling Lucky"}
-        </Button>
-      </div>
-    </>
+        {isFetching ? "Generating..." : "Generate"}
+      </Button>
+    </div>
   );
 };
 

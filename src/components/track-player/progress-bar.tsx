@@ -16,6 +16,7 @@ const ProgressBar = ({
   setIsSeeking: React.Dispatch<React.SetStateAction<boolean>>;
   howlerRef: React.RefObject<ReactHowler>;
 }) => {
+  const [hideThumb, setHideThumb] = React.useState(true);
   const { audioUrl } = useAppSelector((s) => s.audio);
   const handleSeekingChange = (value: SliderValue) => {
     if (audioUrl && typeof value === "number") {
@@ -31,19 +32,36 @@ const ProgressBar = ({
       setIsSeeking(false);
     }
   };
+  const handleHover = () => setHideThumb(false);
+  const handleLeave = () => setHideThumb(true);
 
   return (
     <Slider
+      className="w-4/5"
+      classNames={{
+        startContent: "max-w-10 w-10 p-2 text-white",
+        endContent: "text-white",
+        trackWrapper: "gap-4",
+      }}
       aria-label="progress-bar"
       size="md"
+      hideThumb={hideThumb}
       color="success"
+      onMouseEnter={handleHover}
+      onMouseLeave={handleLeave}
       step={0.01}
       maxValue={duration}
       minValue={0}
       disableThumbScale
       value={seek}
-      startContent={new Date(seek * 1000).toISOString().substring(14, 19)}
-      endContent={new Date(duration * 1000).toISOString().substring(14, 19)}
+      startContent={
+        seek ? new Date(seek * 1000).toISOString().substring(14, 19) : "0:00"
+      }
+      endContent={
+        duration
+          ? new Date(duration * 1000).toISOString().substring(14, 19)
+          : ""
+      }
       onChange={handleSeekingChange}
       onChangeEnd={handleMouseUpSeek}
     />

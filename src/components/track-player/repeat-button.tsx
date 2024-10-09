@@ -9,12 +9,8 @@ const RepeatButton = () => {
   const dispatch = useAppDispatch();
   const handleClick = () => dispatch(setLoop(true));
   return (
-    <Button isIconOnly className="w-16 h-16">
-      <PiRepeatFill
-        onClick={handleClick}
-        size={SIZE}
-        color={loop ? "black" : "white"}
-      />
+    <Button isIconOnly className="w-16 h-16" onClick={handleClick}>
+      <PiRepeatFill size={SIZE} color={loop ? "black" : "white"} />
     </Button>
   );
 };

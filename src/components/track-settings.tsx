@@ -5,7 +5,7 @@ import TempoSection from "./tempo-section";
 
 const TrackSettings = ({ isFetching }: { isFetching: boolean }) => {
   return (
-    <div className="flex flex-col items-center p-8 gap-7">
+    <div className="flex flex-col items-center p-8 gap-7 mb-10">
       <KeySection isFetching={isFetching} />
       <GenreSection isFetching={isFetching} />
       <TempoSection isFetching={isFetching} />

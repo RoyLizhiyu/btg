@@ -72,4 +72,48 @@ const BPM_MAP = {
   fast: "Fast",
 };
 
-export { KEYS, GENRES, BPM, KEYS_MAP, GENRES_MAP, BPM_MAP };
+const KEY_COLOR_MAP: Record<any, string> = {
+  c: "#e9453b",
+  g: "#e81a64",
+  d: "#5a4496",
+  a: "#4053a0",
+  e: "#428ecc",
+  b: "#31a4dd",
+  gb: "#1cb8d1",
+  db: "#199688",
+  ab: "#4aaf51",
+  eb: "#fbec3b",
+  bb: "#fdc018",
+  f: "#b82d25",
+  am: "#f0a48d",
+  em: "#ee9aa9",
+  bm: "#a294c5",
+  "f#m": "#979bcb",
+  "c#m": "#a5bde3",
+  "g#m": "#a6caea",
+  ebm: "#a7d7e5",
+  bbm: "#9bc3bb",
+  fm: "#add1a1",
+  cm: "#f8f0a7",
+  gm: "#fbda95",
+  dm: "#e88b6f",
+};
+const GENRE_COLOR_MAP: Record<any, string> = {
+  jazz: "#FFC0CB",
+  rock: "#DC143C",
+  rnb: "#FFA500",
+  neoSoul: "#9e7ec1",
+  funk: "#fffb03",
+  blues: "#0000E1",
+  ballad: "#87CEEB",
+};
+export {
+  KEYS,
+  GENRES,
+  BPM,
+  KEYS_MAP,
+  GENRES_MAP,
+  BPM_MAP,
+  KEY_COLOR_MAP,
+  GENRE_COLOR_MAP,
+};

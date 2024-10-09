@@ -11,6 +11,7 @@
   "dependencies": {
     "@distube/ytdl-core": "^4.14.4",
     "@nextui-org/button": "^2.0.38",
+    "@nextui-org/card": "^2.0.34",
     "@nextui-org/chip": "^2.0.33",
     "@nextui-org/select": "^2.2.5",
     "@nextui-org/slider": "^2.2.17",
@@ -19,7 +20,8 @@
     "@nextui-org/theme": "^2.2.9",
     "@reduxjs/toolkit": "^2.2.7",
     "axios": "^1.7.7",
-    "framer-motion": "^11.5.4",
+    "chroma-js": "^3.1.1",
+    "framer-motion": "^11.11.1",
     "next": "^14.2.12",
     "react": "^18",
     "react-dom": "^18",
@@ -30,6 +32,7 @@
     "ytdl-mp3": "^5.0.0"
   },
   "devDependencies": {
+    "@types/chroma-js": "^2.4.4",
     "@types/node": "^20.16.2",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18",

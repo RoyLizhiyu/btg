@@ -11,12 +11,8 @@ const ShuffleButton = () => {
     dispatch(setLoop(false));
   };
   return (
-    <Button isIconOnly className="w-16 h-16">
-      <PiShuffleFill
-        onClick={handleClick}
-        size={SIZE}
-        color={loop ? "white" : "black"}
-      />
+    <Button isIconOnly className="w-16 h-16" onClick={handleClick}>
+      <PiShuffleFill size={SIZE} color={loop ? "white" : "black"} />
     </Button>
   );
 };

@@ -5,16 +5,23 @@ import React from "react";
 import { FaCirclePause, FaCirclePlay } from "react-icons/fa6";
 const SIZE = 35;
 const PlayPauseButton = () => {
-  const playing = useAppSelector((s) => s.audio.playing);
+  const { playing, audioUrl } = useAppSelector((s) => s.audio);
   const dispatch = useAppDispatch();
   const flipPlayButton = () => dispatch(setPlaying(!playing));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleSpaceBar = (event: { code: string }) => {
+    if (audioUrl && event.code == "Space") {
+      dispatch(setPlaying(!playing));
+    }
+  };
+  React.useEffect(() => {
+    window.addEventListener("keyup", handleSpaceBar);
+
+    return () => window.removeEventListener("keyup", handleSpaceBar);
+  }, [playing, audioUrl, handleSpaceBar]);
   return (
-    <Button isIconOnly className="w-16 h-16">
-      {playing ? (
-        <FaCirclePause onClick={flipPlayButton} size={SIZE} />
-      ) : (
-        <FaCirclePlay onClick={flipPlayButton} size={SIZE} />
-      )}
+    <Button isIconOnly className="w-16 h-16" onClick={flipPlayButton}>
+      {playing ? <FaCirclePause size={SIZE} /> : <FaCirclePlay size={SIZE} />}
     </Button>
   );
 };
