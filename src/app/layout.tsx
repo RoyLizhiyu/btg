@@ -5,7 +5,7 @@ import StoreProvider from "@/lib/store/storeProvider";
 import { NextUIProvider } from "@nextui-org/system";
 
 const inter = Inter({ subsets: ["latin"] });
-
+ 
 export const metadata: Metadata = {
   title: "BTG - Backing Track Generator",
   description: "BTG - Backing Track Generator",
