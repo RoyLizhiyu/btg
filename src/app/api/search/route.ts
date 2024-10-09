@@ -1,7 +1,5 @@
 import axios from "axios";
-import { NextApiResponse } from "next";
-import fs, { Stats } from "fs";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import ytdl from "@distube/ytdl-core";
 import { BPM_MAP, GENRES_MAP, KEYS_MAP } from "@/constants";
 import { Bpm, Genre, Key } from "@/types";
@@ -117,12 +115,3 @@ export async function GET(req: Request) {
     });
   }
 }
-
-export const config = {
-  api: {
-    responseLimit: false,
-    bodyParser: {
-      sizeLimit: "100mb",
-    },
-  },
-};
