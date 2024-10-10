@@ -62,7 +62,7 @@ export async function GET(req: Request) {
   const youtubeSearchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
     searchQuery
   )}&type=video&key=${
-    process.env.YOUTUBE_API_KEY
+    process.env.NEXT_PUBLIC_YOUTUBE_API
   }&maxResults=10&order=relevance&RegionCode=CA`;
 
   const youtubeResponse = await axios.get(youtubeSearchUrl);
