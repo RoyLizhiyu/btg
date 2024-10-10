@@ -42,76 +42,79 @@ const filterVideos = (videos: any, key: string[]) =>
   );
 
 export async function GET(req: Request) {
-  const { searchParams } = new URL(req.url);
-  const key = searchParams.get("key");
-  const genre = searchParams.get("genre");
-  const bpm = searchParams.get("bpm");
+  return new Response(null, {
+    status: 200,
+  });
+  // const { searchParams } = new URL(req.url);
+  // const key = searchParams.get("key");
+  // const genre = searchParams.get("genre");
+  // const bpm = searchParams.get("bpm");
 
-  // If any of the required parameters are missing
-  if (!key || !genre || !bpm) {
-    return new NextResponse(
-      JSON.stringify({ error: "Missing key, genre, or bpm" }),
-      { status: 400, headers: { "Content-Type": "application/json" } }
-    );
-  }
+  // // If any of the required parameters are missing
+  // if (!key || !genre || !bpm) {
+  //   return new NextResponse(
+  //     JSON.stringify({ error: "Missing key, genre, or bpm" }),
+  //     { status: 400, headers: { "Content-Type": "application/json" } }
+  //   );
+  // }
 
-  // Search Youtube for videos using the search query
-  const searchQuery = `Backing Track ${GENRES_MAP[genre as Genre]} ${
-    KEYS_MAP[key as Key]
-  } ${BPM_MAP[bpm as Bpm]}`;
-  const youtubeSearchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
-    searchQuery
-  )}&type=video&key=${
-    process.env.NEXT_PUBLIC_YOUTUBE_API
-  }&maxResults=10&order=relevance&RegionCode=CA`;
+  // // Search Youtube for videos using the search query
+  // const searchQuery = `Backing Track ${GENRES_MAP[genre as Genre]} ${
+  //   KEYS_MAP[key as Key]
+  // } ${BPM_MAP[bpm as Bpm]}`;
+  // const youtubeSearchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
+  //   searchQuery
+  // )}&type=video&key=${
+  //   process.env.NEXT_PUBLIC_YOUTUBE_API
+  // }&maxResults=10&order=relevance&RegionCode=CA`;
 
-  const youtubeResponse = await axios.get(youtubeSearchUrl);
-  const videos = youtubeResponse.data.items;
+  // const youtubeResponse = await axios.get(youtubeSearchUrl);
+  // const videos = youtubeResponse.data.items;
 
-  // If no videos are found
+  // // If no videos are found
 
-  // Randomly select a video
-  //TODO: Make sure the random selected video is the correct key.
-  const filteredVideos = filterVideos(videos, [key, KEYS_MAP[key as Key]]);
-  videos.forEach((video: any) => console.log(video.snippet.title));
-  console.log("-----------------------------------------------------");
-  console.log("-----------------------------------------------------");
-  console.log("-----------------------------------------------------");
-  console.log({ searchQuery });
-  filteredVideos.forEach((video: any) => console.log(video.snippet.title));
-  if (!filteredVideos || filteredVideos.length === 0) {
-    return new NextResponse(
-      JSON.stringify({ error: "No backing track found" }),
-      {
-        status: 404,
-        headers: { "Content-Type": "application/json" },
-      }
-    );
-  }
-  const randomIndex = Math.floor(Math.random() * filteredVideos.length);
-  const selectedVideo = filteredVideos[randomIndex];
-  const videoUrl = `https://www.youtube.com/watch?v=${selectedVideo.id.videoId}`;
-  console.log({ videoUrl });
-  try {
-    const stream = ytdl(videoUrl, {
-      filter: "audioonly",
-    });
+  // // Randomly select a video
+  // //TODO: Make sure the random selected video is the correct key.
+  // const filteredVideos = filterVideos(videos, [key, KEYS_MAP[key as Key]]);
+  // videos.forEach((video: any) => console.log(video.snippet.title));
+  // console.log("-----------------------------------------------------");
+  // console.log("-----------------------------------------------------");
+  // console.log("-----------------------------------------------------");
+  // console.log({ searchQuery });
+  // filteredVideos.forEach((video: any) => console.log(video.snippet.title));
+  // if (!filteredVideos || filteredVideos.length === 0) {
+  //   return new NextResponse(
+  //     JSON.stringify({ error: "No backing track found" }),
+  //     {
+  //       status: 404,
+  //       headers: { "Content-Type": "application/json" },
+  //     }
+  //   );
+  // }
+  // const randomIndex = Math.floor(Math.random() * filteredVideos.length);
+  // const selectedVideo = filteredVideos[randomIndex];
+  // const videoUrl = `https://www.youtube.com/watch?v=${selectedVideo.id.videoId}`;
+  // console.log({ videoUrl });
+  // try {
+  //   const stream = ytdl(videoUrl, {
+  //     filter: "audioonly",
+  //   });
 
-    const headers = new Headers();
-    headers.set("Content-Type", "audio/mpeg");
-    headers.set(
-      "Content-Disposition",
-      `attachment; filename="${key}-${genre}-${bpm}.mp3"`
-    );
+  //   const headers = new Headers();
+  //   headers.set("Content-Type", "audio/mpeg");
+  //   headers.set(
+  //     "Content-Disposition",
+  //     `attachment; filename="${key}-${genre}-${bpm}.mp3"`
+  //   );
 
-    return new Response(stream as any, {
-      status: 200,
-      headers,
-    });
-  } catch (error) {
-    return new Response(JSON.stringify({ error: "Error streaming audio" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
-  }
+  //   return new Response(stream as any, {
+  //     status: 200,
+  //     headers,
+  //   });
+  // } catch (error) {
+  //   return new Response(JSON.stringify({ error: "Error streaming audio" }), {
+  //     status: 500,
+  //     headers: { "Content-Type": "application/json" },
+  //   });
+  // }
 }
