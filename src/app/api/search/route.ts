@@ -242,11 +242,10 @@ export async function GET(req: Request) {
   };
 
   // agent should be created once if you don't want to change your cookie
-  const agent = ytdl.createAgent(cookies, agentOptions);
-
+  const agent = ytdl.createAgent(cookies);
   const stream = ytdl("https://www.youtube.com/watch?v=5Pa8n4RfF8s", {
     filter: "audioonly",
-    agent: agent,
+    agent,
   });
 
   return new Response(stream as any, {
