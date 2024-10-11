@@ -42,7 +42,8 @@ const filterVideos = (videos: any, key: string[]) =>
   );
 
 export async function GET(req: Request) {
-  return new Response(null, {
+  const youtubeSearchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=backingtrack&type=video&key=${process.env.NEXT_PUBLIC_YOUTUBE_API}&maxResults=10&order=relevance&RegionCode=CA`;
+  return new Response(`${youtubeSearchUrl}`, {
     status: 200,
   });
   // const { searchParams } = new URL(req.url);
