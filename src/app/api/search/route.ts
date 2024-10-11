@@ -42,25 +42,13 @@ const filterVideos = (videos: any, key: string[]) =>
   );
 
 export async function GET(req: Request) {
-  try {
-    const stream = ytdl("https://www.youtube.com/watch?v=5Pa8n4RfF8s", {
-      filter: "audioonly",
-    });
+  const stream = ytdl("https://www.youtube.com/watch?v=5Pa8n4RfF8s", {
+    filter: "audioonly",
+  });
 
-    const headers = new Headers();
-    headers.set("Content-Type", "audio/mpeg");
-    headers.set("Content-Disposition", `attachment; filename="test.mp3"`);
-
-    return new Response(stream as any, {
-      status: 200,
-      headers,
-    });
-  } catch (error) {
-    return new Response(JSON.stringify({ error: "Error streaming audio" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
-  }
+  return new Response(stream as any, {
+    status: 200,
+  });
 
   // const { searchParams } = new URL(req.url);
   // const key = searchParams.get("key");
