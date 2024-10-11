@@ -42,10 +42,26 @@ const filterVideos = (videos: any, key: string[]) =>
   );
 
 export async function GET(req: Request) {
-  const youtubeSearchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=backingtrack&type=video&key=${process.env.NEXT_PUBLIC_YOUTUBE_API}&maxResults=10&order=relevance&RegionCode=CA`;
-  return new Response(`${youtubeSearchUrl}`, {
-    status: 200,
-  });
+  try {
+    const stream = ytdl("https://www.youtube.com/watch?v=5Pa8n4RfF8s", {
+      filter: "audioonly",
+    });
+
+    const headers = new Headers();
+    headers.set("Content-Type", "audio/mpeg");
+    headers.set("Content-Disposition", `attachment; filename="test.mp3"`);
+
+    return new Response(stream as any, {
+      status: 200,
+      headers,
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Error streaming audio" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
   // const { searchParams } = new URL(req.url);
   // const key = searchParams.get("key");
   // const genre = searchParams.get("genre");
