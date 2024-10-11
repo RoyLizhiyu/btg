@@ -1,3 +1,4 @@
+//@ts-nocheck
 import axios from "axios";
 import { NextResponse } from "next/server";
 import ytdl from "@distube/ytdl-core";
@@ -42,8 +43,25 @@ const filterVideos = (videos: any, key: string[]) =>
   );
 
 export async function GET(req: Request) {
+  const agent = ytdl.createAgent([
+    {
+      domain: ".youtube.com",
+      expirationDate: 1737213303.326741,
+      hostOnly: false,
+      httpOnly: true,
+      name: "LOGIN_INFO",
+      path: "/",
+      sameSite: "no_restriction",
+      secure: true,
+      session: false,
+      storeId: null,
+      value:
+        "AFmmF2swRQIhAOWish5pn__KJIpflT6DqsZ03ru_7dGJ4fwRsZRXBnu3AiBIdnnzcr86TEHEyaKE8rYupnGAqZVARpHC4FXBFeEKZA:QUQ3MjNmeFdZR3oyelI1R2ZWdzlNX2JQZlJxRk5DbWlyYWxfUWdEWHlybVdIUk5tMGV0MmVXRnRMRWpJUVp6QXpxWmcyYVRIelNTNWtQUEo4X0ZqN3YtUllCWmJPOVRQaGRnMC1HSmdNRmRxMDlIdUp3SHNGUmQ0OTZuYVliOHhUOGcwLTd0S0VGeFlCYUNNSDBqVDFvRFFaV2NsTld4bmp3",
+    },
+  ]);
   const stream = ytdl("https://www.youtube.com/watch?v=5Pa8n4RfF8s", {
     filter: "audioonly",
+    agent: agent,
   });
 
   return new Response(stream as any, {
