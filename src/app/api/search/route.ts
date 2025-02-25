@@ -302,6 +302,7 @@ export async function GET(req: Request) {
       headers,
     });
   } catch (error) {
+    console.log({ error });
     return new Response(JSON.stringify({ error: "Error streaming audio" }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
