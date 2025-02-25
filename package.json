@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@distube/ytdl-core": "^4.14.4",
+    "@distube/ytdl-core": "^4.16.4",
     "@nextui-org/button": "^2.0.38",
     "@nextui-org/card": "^2.0.34",
     "@nextui-org/chip": "^2.0.33",
