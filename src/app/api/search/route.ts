@@ -96,7 +96,7 @@ export async function GET(req: Request) {
   console.log({ videoUrl });
   try {
     const stream = ytdl(videoUrl, {
-      filter: "audioonly",
+      quality: "highestaudio",
     });
 
     const headers = new Headers();
