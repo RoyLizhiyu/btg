@@ -83,30 +83,34 @@ const TrackPlayer = ({
           onLoad={handleLoad}
         />
       )}
-      <div className="flex px-16 justify-center">
-        <SubmitButton fetchTrack={fetchTrack} isFetching={isFetching} />
-        <ButtonGroup
-          color="danger"
-          variant="shadow"
-          className="w-3/5 max-w-[300px]"
-          isDisabled={!audioUrl}
-        >
-          <ShuffleButton />
-          <PlayPauseButton />
-          <RepeatButton />
-        </ButtonGroup>
-        <FeelingLuckyButton fetchTrack={fetchTrack} isFetching={isFetching} />
+      <div className="fixed bottom-0 z-50 w-full bg-neutral-900/80 p-4 sm:p-6 md:px-16">
+        <div className="flex items-center justify-center  gap-4 p-4 sm:p-8 md:px-16">
+          <SubmitButton fetchTrack={fetchTrack} isFetching={isFetching} />
+          <FeelingLuckyButton fetchTrack={fetchTrack} isFetching={isFetching} />
+        </div>
+        <div className="flex items-center justify-center gap-4 p-4 sm:p-8 md:px-16">
+          <ButtonGroup
+            color="danger"
+            variant="shadow"
+            className="w-3/5 max-w-[300px] w-full"
+            isDisabled={!audioUrl}
+          >
+            <ShuffleButton />
+            <PlayPauseButton />
+            <RepeatButton />
+          </ButtonGroup>
+        </div>
       </div>
 
-      <div className="py-8 px-32">
+      <div className="px-4 py-4 sm:px-8 md:px-16">
         <Card
           fullWidth
           shadow="lg"
           classNames={{
-            base: "bg-black ",
+            base: "bg-black",
           }}
         >
-          <div className="flex items-center p-6 px-4 gap-10">
+          <div className="flex items-center p-2 px-4 gap-5">
             <ProgressBar
               seek={seek}
               setSeek={setSeek}

@@ -33,20 +33,19 @@ export default function Home() {
   }, [key, genre, bpm, primaryBackgroundColor, secondaryBackgroundColor]);
   return (
     <motion.div className="min-h-screen" style={{ background }}>
-      <TrackSettings isFetching={isFetching} />
       <TrackPlayer isFetching={isFetching} fetchTrack={fetchTrack} />
-      <div className="flex flex-row justify-center">
+      <TrackSettings isFetching={isFetching} />
+      <div className="pb-[300px] flex flex-row justify-center">
         <footer>
           <p className="text-center">BTG - Backing Track Generator</p>
           <p className="text-center">
             Copyright ⓒ{" "}
             <a
-              href="https://github.com/RoyLizhiyu"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 hover:underline"
             >
-              Zhiyu Li
+              Zhiyu
             </a>{" "}
             {new Date().getFullYear()}
           </p>

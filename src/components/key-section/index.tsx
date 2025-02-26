@@ -15,15 +15,16 @@ const KeySection = ({ isFetching }: { isFetching: boolean }) => {
     dispatch(setKey(e as Key));
   };
   return (
-    <div className="flex flex-col items-center gap-6">
+    <div className="flex flex-col items-center gap-6 ">
       <Chip
         size="lg"
-        className="p-6 bg-neutral-200"
+        className="p-6 bg-neutral-900"
         variant="shadow"
         radius="sm"
       >
-        <p className="text-2xl font-semibold">Pick a Key</p>
+        <p className="text-2xl font-semibold text-white">Pick a Key</p>
       </Chip>
+
       <Tabs
         variant="solid"
         size="lg"

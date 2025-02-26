@@ -15,11 +15,11 @@ const TempoSection = ({ isFetching }: { isFetching: boolean }) => {
     <div className="flex flex-col items-center gap-6">
       <Chip
         size="lg"
-        className="p-6 bg-neutral-200"
+        className="p-6 bg-neutral-900"
         variant="shadow"
         radius="sm"
       >
-        <p className="text-2xl font-semibold">Pick a BPM</p>
+        <p className="text-2xl font-semibold text-white">Pick a BPM</p>
       </Chip>
       <Tabs
         variant="solid"
@@ -40,7 +40,7 @@ const TempoSection = ({ isFetching }: { isFetching: boolean }) => {
           <Tab
             key={bpm}
             title={
-              <p className="text-lg text-white">
+              <p className="text-md text-white">
                 {messages[bpm as Bpm].defaultMessage}
               </p>
             }

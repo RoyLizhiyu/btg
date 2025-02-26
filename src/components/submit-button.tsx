@@ -23,16 +23,16 @@ const SubmitButton = ({
   };
 
   return (
-    <div className="w-1/5 m-0 flex items-center justify-center">
+    <div className="m-0 flex items-center justify-center">
       <Button
         onClick={handleSubmit}
         color="success"
         isLoading={isFetching}
         size="lg"
-        className="text-lg text-white"
+        className="text-md text-white w-full sm:w-auto "
         variant="shadow"
       >
-        {isFetching ? "Generating..." : "Generate"}
+        {isFetching ? "" : "Generate"}
       </Button>
     </div>
   );

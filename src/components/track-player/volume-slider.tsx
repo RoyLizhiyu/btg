@@ -30,7 +30,7 @@ const VolumeSilder = ({
     return () => window.removeEventListener("keyup", handleMuteKey);
   }, [handleMuteKey, volume]);
   return (
-    <div className="flex flex-row gap-2 w-1/5 h-full max-w-md items-center">
+    <div className="flex items-center">
       <button>
         {volume === 0 ? (
           <MdVolumeOff size={30} onClick={handleMute} color="white" />
@@ -38,7 +38,7 @@ const VolumeSilder = ({
           <MdVolumeUp size={30} onClick={handleMute} color="white" />
         )}
       </button>
-      <Slider
+      {/* <Slider
         aria-label="Volume"
         size="md"
         color="success"
@@ -47,7 +47,7 @@ const VolumeSilder = ({
           if (typeof value === "number") setVolume(value / 100);
         }}
         className="max-w-md"
-      />
+      /> */}
     </div>
   );
 };

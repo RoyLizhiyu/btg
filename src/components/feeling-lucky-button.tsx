@@ -32,16 +32,16 @@ const FeelingLuckyButton = ({
     );
   };
   return (
-    <div className="w-1/5 m-0 flex items-center justify-center">
+    <div className="m-0 flex items-center justify-center">
       <Button
         onClick={handleFeelingLucky}
         color="danger"
         isLoading={isFetching}
         size="lg"
-        className="text-lg"
+        className="text-md text-white w-full sm:w-auto px-6 py-3"
         variant="shadow"
       >
-        {isFetching ? "Generating..." : "I'm Feeling Lucky"}
+        {isFetching ? "" : "I'm Feeling Lucky"}
       </Button>
     </div>
   );
