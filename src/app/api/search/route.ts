@@ -292,7 +292,10 @@ export async function GET(req: Request) {
       localAddress: "127.0.0.1",
     };
 
-    ytdl.createAgent(cookies, agentOptions);
+    const agent = ytdl.createAgent(cookies);
+    const basicInfo = await ytdl.getBasicInfo(videoUrl, { agent });
+    const info = await ytdl.getInfo(videoUrl, { agent });
+    console.log({ basicInfo, info });
     const stream = ytdl(videoUrl, {
       quality: "highestaudio",
     });
