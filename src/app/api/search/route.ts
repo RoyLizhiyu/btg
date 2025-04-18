@@ -299,7 +299,7 @@ export async function GET(req: Request) {
     const stream = ytdl(videoUrl, {
       quality: "highestaudio",
     });
-
+    console.log({ stream });
     const headers = new Headers();
     headers.set("Content-Type", "audio/mpeg");
     headers.set(

@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@distube/ytdl-core": "^4.16.5",
+    "@distube/ytdl-core": "^4.16.8",
     "@heroui/alert": "^2.2.13",
     "@heroui/system": "^2.4.10",
     "@heroui/theme": "^2.4.9",
