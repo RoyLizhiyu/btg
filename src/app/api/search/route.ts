@@ -278,13 +278,14 @@ export async function GET(req: Request) {
       localAddress: "127.0.0.1",
     };
 
-    const agent = ytdl.createAgent(cookies as any);
+    // const agent = ytdl.createAgent(cookies as any);
+    // const agent = ytdl.createProxyAgent("154.36.110.199");
+
     // const basicInfo = await ytdl.getBasicInfo(videoUrl, { agent });
     // const info = await ytdl.getInfo(videoUrl, { agent });
     // console.log({ basicInfo, info });
     const stream = ytdl(videoUrl, {
       quality: "highestaudio",
-      agent,
     });
     console.log({ stream });
     const headers = new Headers();
